@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/home/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/add/add.css">
+{% endblock %}
+
+{% block head %}
+    <form action="add/" method="post">
+    {%csrf_token%}
+        <div id="text1" class="">
+            <span>书籍名称</span>
+            <input type="text" name="book">
+        </div>
+        <div id="text1" class="">
+            <span>价格1</span>
+            <input type="text" name="price">
+        </div>
+        <div id="text1" class="">
+            <span>出版日期</span>
+            <input type="text" name="date">
+        </div>
+        <div id="text1" class="">
+            <span>出版社</span>
+            <input type="text" name="press">
+        </div>
+        <div id="text1" class="">
+            <span>作者1</span>
+            <input type="text" name="auther">
+        </div>
+    <button type="submit" value="提交">提交</button>
+    </form>
+{% endblock %}

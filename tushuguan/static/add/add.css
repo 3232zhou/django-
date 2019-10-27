@@ -1,0 +1,14 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#text1{
+    width: 200px;
+    height: 30px;
+    margin: auto;
+    margin-top: 50px;
+}
+#text1 span{
+    text-align: center;
+    font-size: 20px;
+}

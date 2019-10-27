@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/home/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/home/bootstrap.min.css">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
+{% endblock %}
+
+{% block head %}
+    <div class="nav">
+        <div class="head">
+            <li>
+                <a href="{% url 'home' %}">返回首页</a>
+            </li>
+            <li>
+                <a href="{% url 'add_book' %}">添加书本</a>
+            </li>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="body">
+        <a href="" class="a1">LuffyCity</a>
+        <a href="" class="a2">BookManage</a>
+        <hr style="margin-top: 20px">
+    </div>
+{% endblock %}
+
+{% block tail %}
+    <div class="tail">
+        <table class="table table-bordered" id="table">
+            <tr>
+                <th>书籍名称</th>
+                <th class="col-md-2">价格  </th>
+                <th>出版日期</th>
+                <th>出版社</th>
+                <th>作者</th>
+                <th>删除操作</th>
+{#                <th>编辑操作</th>#}
+            </tr>
+            <tr>
+                <th>python教程</th>
+                <th>199</th>
+                <th>2018-01-01</th>
+                <th>人们出版社</th>
+                <th>zhoudong</th>
+                <th><button style="font-size: 20px; background: red; border-radius: 10px">删除</button></th>
+{#                <th><button>编辑</button></th>#}
+            </tr>
+            {% for foo in bookList %}
+                <tr class="d">
+                    <th>{{ foo.bookName }}</th>
+                    <th>{{ foo.price }}</th>
+                    <th>{{ foo.publication }}</th>
+                    <th>{{ foo.press }}</th>
+                    <th>{{ foo.auther }}</th>
+                    <th><button class="Delete" style="font-size: 20px; background: red; border-radius: 10px">删除</button></th>
+{#                <th><button>编辑</button></th>#}
+                </tr>
+            {% endfor %}
+        </table>
+        <div id="paging" class="text-center">
+            <nav>
+                <ul class="paginator">
+                    <li class="step-links">
+                        {% if customer.has_previous  %}
+                            <a class="active" href="?page={{ customer.previous_page_number }}">上一页</a>
+                        {% endif %}
+                    <span class="current">
+                        page{{ customer.number }} of {{ customer.paginator.num_pages }}
+                    </span>
+                    {% if customer.has_next  %}
+                        <a class="active" href="?page={{ customer.next_page_number }}">下一页</a>
+                    {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <a href="{% url 'add_book' %}" class="b b-course">
+            添加书籍
+{#            <button class="butt">添加书籍</button>#}
+        </a>
+    </div>
+{% endblock %}
